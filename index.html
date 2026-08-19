@@ -341,7 +341,7 @@ input,select,textarea{font-family:inherit;}
 /* ═══════════════════════════════════════════════════
    SEED DATA — pure function so we can reset
 ═══════════════════════════════════════════════════ */
-const NOW = new Date('2026-06-11T09:00:00Z');
+const NOW = new Date('2026-08-19T09:00:00Z');
 const fmt = d => new Date(d+'T00:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
 const daysUntil = d => Math.round((new Date(d+'T00:00:00Z')-NOW)/86400000);
 const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -363,7 +363,7 @@ const TOPIC_DETAILS = {
     courseImpact:[
       {course:'Claude Platform Course v1.0', gap:'missing', note:'Projects & Notebooks not covered at all — major gap'},
       {course:'L1 Foundational Core v2.0', gap:'outdated', note:'General tool selection section references Claude as stateless — needs update'},
-      {course:'May 2026 Catch-up Module', gap:'ok', note:'No overlap — this is net-new content'},
+      {course:'Jul 2026 Catch-up Module', gap:'ok', note:'No overlap — this is net-new content'},
     ],
     deliverable:'15–20 min L3 Update Drop: interface walkthrough, 5-step Project setup, real team scenario (marketing), knowledge check (2 MCQs).',
   },
@@ -401,16 +401,60 @@ const TOPIC_DETAILS = {
     deliverable:'15–20 min L3 Update Drop: reasoning mode explained, when to use it (decision guide), side-by-side demo (financial analysis), knowledge check.',
   },
   'r8':{
-    whatsNew:'Scheduled Q3 quarterly review. The Q2 2026 period saw significant shifts: agentic AI moved from experimental to mainstream, reasoning models became consumer-accessible, and vibe coding emerged as a legitimate professional workflow.',
+    whatsNew:'Scheduled Q4 quarterly review. The Q3 2026 period saw significant shifts: agentic AI moved from experimental to mainstream, reasoning models became consumer-accessible, and vibe coding emerged as a legitimate professional workflow.',
     whatChanged:'The L1 Foundational Core v2.0 was authored in Q4 2025. Since then: (1) agentic AI definitions have evolved materially, (2) reasoning models now require their own section, (3) the "how to evaluate AI tools" framework is partially outdated, (4) responsible AI section needs EU AI Act and FTC Order updates.',
     learnerImpact:'New learners starting the foundation course will encounter outdated framing of agentic AI and missing coverage of reasoning models. The responsible AI section may create compliance blind spots for enterprise learners.',
     courseImpact:[
       {course:'L1 Module 1 — Core concepts', gap:'outdated', note:'Agentic AI section definition is Q4 2025 vintage'},
       {course:'L1 Module 2 — Prompt engineering', gap:'outdated', note:'Missing: reasoning model prompting, chain-of-thought patterns'},
       {course:'L1 Module 3 — Tool evaluation', gap:'outdated', note:'Landscape section references pre-2026 tool set'},
-      {course:'L1 Module 4 — Responsible AI', gap:'missing', note:'EU AI Act (Aug 2026 deadline) + FTC Order not covered'},
+      {course:'L1 Module 4 — Responsible AI', gap:'missing', note:'EU AI Act (now in force) + FTC Order not covered'},
     ],
     deliverable:'Full L1 quarterly refresh: 5 revised modules, 7 updated video scripts, new assessment bank items, revised manifests. ~3 month production cycle.',
+  },
+  'r11':{
+    whatsNew:'Anthropic has released Claude 4 Sonnet as their new flagship model, with two major GA capabilities: Extended Thinking (the model reasons step-by-step before responding, with the reasoning trace visible) and Computer Use (Claude can control a computer — browser, files, apps — to complete tasks autonomously). Both features are now available to all Claude.ai Pro users and via API.',
+    whatChanged:'Claude 3.5 was the previous benchmark. Claude 4 represents a step-change in two dimensions: (1) reasoning quality — extended thinking consistently outperforms on complex multi-step problems, and (2) autonomy — computer use means professionals can hand off entire workflows, not just single prompts. The interface for both is materially different from anything in the current Claude course.',
+    learnerImpact:'Professionals who use Claude for analysis, writing, and research will find the extended thinking toggle changes their prompting strategy entirely. Computer use unlocks automation for non-technical users that previously required developer support — this is a primary teachable moment.',
+    courseImpact:[
+      {course:'Anthropic Claude Platform Course v1.0', gap:'outdated', note:'Entire course predates Claude 4 — capabilities, interface, and use-case framing all need revision'},
+      {course:'L1 Foundational Core — tool evaluation module', gap:'outdated', note:'Model comparison section references Claude 3.5 as benchmark; needs updating'},
+      {course:'L3 archive', gap:'missing', note:'No extended thinking or computer use content exists — two net-new L3 drops needed'},
+    ],
+    deliverable:'Two L3 Update Drops: (1) Extended Thinking — when and how to use it, 15 min. (2) Computer Use GA — practical walkthrough with business task demo, 20 min. Plus L2 Claude course major revision.',
+  },
+  'r12':{
+    whatsNew:'OpenAI has released GPT-5, available to ChatGPT Plus and Pro subscribers. GPT-5 is a unified multimodal model — it reasons across text, images, audio, and video in a single context. It also introduces Adaptive Reasoning: the model automatically selects the appropriate reasoning depth per query without user intervention.',
+    whatChanged:'GPT-4o required users to manually select model variants (4o, o1, o3) for different task types. GPT-5 eliminates this choice — one model handles everything, with reasoning depth scaling automatically. This fundamentally changes the "which model do I use?" decision framework that professionals have learned.',
+    learnerImpact:'Professionals who have learned to route tasks across ChatGPT model variants now have an outdated mental model. The simplification is good news, but requires relearning. The multimodal reasoning capability (analyse this image + this document together) also unlocks workflows not previously possible.',
+    courseImpact:[
+      {course:'ChatGPT / OpenAI Platform Course v1.1', gap:'outdated', note:'Model selection section is now obsolete; GPT-5 unified model changes the entire decision framework'},
+      {course:'L1 Foundational Core — model evaluation', gap:'outdated', note:'Tool comparison framework references pre-GPT-5 model landscape'},
+      {course:'L3 archive', gap:'missing', note:'No GPT-5 adaptive reasoning or cross-modal workflow content exists'},
+    ],
+    deliverable:'L2 ChatGPT course major update: revise model selection section, add GPT-5 capabilities module, add multimodal workflow module. Plus one L3 Drop: GPT-5 for professionals — what changed and what to do differently.',
+  },
+  'r13':{
+    whatsNew:'Google has launched Gemini 2.0 Ultra, its most capable model, with native real-time multimodal reasoning: the model can process live audio, video streams, and documents simultaneously. It also introduces native tool-calling — Gemini can invoke Google Search, Maps, Calendar, and third-party APIs directly within a conversation without user-initiated prompts.',
+    whatChanged:'Gemini 1.5 Pro/Flash required users to upload files or paste content manually. Gemini 2.0 Ultra can observe a live screen share, listen to a meeting, and take notes — all in one session. Native tool-calling removes the copy-paste step between Gemini and other Google services entirely.',
+    learnerImpact:'Enterprise professionals using Google Workspace now have an AI that can attend meetings, observe workflows, and act on them — without switching tools. This is a qualitative shift from "AI assistant" to "AI colleague" that requires new mental models and governance understanding.',
+    courseImpact:[
+      {course:'Google Gemini Platform Course v1.0', gap:'outdated', note:'Course describes Gemini 1.5 capabilities — 2.0 Ultra is a different product category'},
+      {course:'L3 archive', gap:'missing', note:'No real-time multimodal or native tool-calling content exists'},
+      {course:'L1 — responsible AI module', gap:'outdated', note:'Live observation capabilities raise new consent and governance questions not covered in v2.0'},
+    ],
+    deliverable:'L2 Gemini course full revision + two L3 Drops: (1) Real-time multimodal workflows, 20 min. (2) Native tool-calling in Gemini 2.0, 15 min.',
+  },
+  'r14':{
+    whatsNew:'Meta has released Llama 4, a family of open-weight models including a 70B instruction-tuned variant and a 400B mixture-of-experts model. Both are commercially licensed for enterprise deployment. Llama 4 matches or exceeds GPT-4o on standard benchmarks and can be deployed on-premises or in private cloud environments.',
+    whatChanged:'Previous open-source models (Llama 2, Llama 3) were good but clearly behind closed frontier models. Llama 4 closes this gap — enterprises can now run a frontier-quality model internally, with full data control and no per-token costs. This changes the AI procurement and governance conversation for enterprise learners.',
+    learnerImpact:'IT leaders, compliance officers, and data-sensitive enterprises (healthcare, legal, finance) now have a credible frontier-quality private deployment option. Professionals in these sectors need to understand Llama 4 as a strategic choice, not just a technical curiosity.',
+    courseImpact:[
+      {course:'L1 Foundational Core — tool landscape module', gap:'outdated', note:'Open-source model section references Llama 3 as ceiling — needs major update'},
+      {course:'L3 archive', gap:'missing', note:'No enterprise open-source deployment framing exists'},
+      {course:'P2 — enterprise AI strategy track', gap:'missing', note:'Llama 4 is a core case study for enterprise AI governance and build-vs-buy decisions'},
+    ],
+    deliverable:'One L3 Drop: Open-source frontier models — what Llama 4 means for enterprise professionals, 20 min. Plus P2 track module addition: private AI deployment options.',
   },
   'r10':{
     whatsNew:'Google has released a deep integration between Gemini Advanced and Google Workspace — Docs, Sheets, Slides, Drive, and Gmail can now be queried and edited directly by Gemini agents without leaving the Workspace UI.',
@@ -422,6 +466,17 @@ const TOPIC_DETAILS = {
       {course:'L1 — agentic workflows module', gap:'ok', note:'Conceptual framework is compatible; no change needed'},
     ],
     deliverable:'Platform course update (L2): revise Workspace integration section + add new cross-app agentic workflow module. ~4 hours revised content.',
+  },
+  'r15':{
+    whatsNew:'Microsoft has launched Copilot autonomous agents across Microsoft 365 — available to all M365 Business and Enterprise subscribers. Copilot can now execute multi-step workflows independently: triaging and responding to emails, scheduling across multiple calendars, drafting and routing documents, and managing Teams meeting follow-ups — all triggered by a single natural-language instruction.',
+    whatChanged:'Previous Copilot in M365 required a user to initiate each action and confirm each step. Autonomous agents complete an entire workflow end-to-end, pausing only at configurable approval gates. The shift is from "Copilot helps me do my work" to "Copilot does the work and reports back." This is the most significant change to the Copilot product since its launch.',
+    learnerImpact:'Every M365 user — across every enterprise that has licensed Copilot — now has an autonomous agent capability. Professionals who do not learn to configure, supervise, and govern these agents will miss major productivity gains. Those who deploy them without understanding the governance implications risk data exposure and compliance failures.',
+    courseImpact:[
+      {course:'Microsoft Copilot Platform Course v1.0', gap:'outdated', note:'Entire course covers assist-mode Copilot only; autonomous agent capability is not covered at all'},
+      {course:'L3 archive', gap:'missing', note:'No autonomous agent configuration or governance content exists'},
+      {course:'L1 — responsible AI module', gap:'outdated', note:'Autonomous action by AI agents raises new approval-gate and audit-trail requirements not in current v2.0'},
+    ],
+    deliverable:'Two L3 Update Drops: (1) Configuring Copilot autonomous agents — 20 min walkthrough with email triage demo. (2) Governing autonomous agents in M365 — approval gates, audit logs, data boundaries. Plus L2 Copilot course major revision.',
   },
 };
 
@@ -456,46 +511,51 @@ function makeSeed() {
     blueprintItem: null,
 
     research: [
-      {id:'r1',topic:'Claude Projects & Notebooks — GA launch',source:'Anthropic blog',layer:'L3',score:91,sev:'high',why:'Major surface change to Claude.ai; broad professional impact; teachable in 15 min',platform:'Anthropic Claude',detected:'2026-06-10',status:'new'},
-      {id:'r2',topic:'Vibe coding goes mainstream — GitHub Copilot Workspace',source:'GitHub changelog + TechCrunch',layer:'L3',score:87,sev:'high',why:'High practical impact for non-engineers; core vibe-coding workflow demo',platform:'All',detected:'2026-06-09',status:'new'},
-      {id:'r3',topic:'Google Gemini 2.5 Flash — extended context window (1M tokens)',source:'Google DeepMind blog',layer:'L3',score:83,sev:'high',why:'Changes how professionals structure long-document prompts; immediate workflow change',platform:'Google Gemini',detected:'2026-06-08',status:'new'},
-      {id:'r4',topic:'OpenAI o3 reasoning model — professional use patterns',source:'OpenAI release notes',layer:'L3',score:79,sev:'high',why:'New reasoning mode changes how professionals should prompt for analysis tasks',platform:'ChatGPT / OpenAI',detected:'2026-06-08',status:'new'},
-      {id:'r5',topic:'Perplexity Deep Research — agentic research for professionals',source:'Perplexity blog + VentureBeat',layer:'L3',score:76,sev:'med',why:'New agentic research pattern; directly applicable to knowledge workers',platform:'All',detected:'2026-06-07',status:'new'},
-      {id:'r6',topic:'Microsoft Copilot Pages — collaborative AI documents',source:'Microsoft M365 blog',layer:'L3',score:72,sev:'med',why:'New collaborative surface for Copilot users; workflow change for M365 orgs',platform:'Microsoft Copilot',detected:'2026-06-06',status:'new'},
-      {id:'r7',topic:'Agentic AI multi-step task automation — pattern library',source:'Research landscape + LangChain blog',layer:'L3',score:80,sev:'high',why:'Conceptual pattern that applies across all tools; durable topic for L3',platform:'All',detected:'2026-06-05',status:'new'},
-      {id:'r8',topic:'L1 Foundational Core — Q3 quarterly review signal',source:'Scheduled quarterly trigger',layer:'L1',score:88,sev:'high',why:'Quarterly cadence triggered; agentic AI section needs update',platform:'All',detected:'2026-06-01',status:'new'},
-      {id:'r9',topic:'AI for FP&A: automated financial modeling — professional demand',source:'Bloomberg + Gartner research',layer:'P2',score:71,sev:'med',why:'High enterprise demand; fits P2 Finance domain track',platform:'All',detected:'2026-06-04',status:'new'},
-      {id:'r10',topic:'Gemini Advanced — real-time Google Workspace deep integration',source:'Google Workspace blog',layer:'L2',score:74,sev:'med',why:'Major platform update to Gemini product; L2 platform course update needed',platform:'Google Gemini',detected:'2026-06-03',status:'new'},
+      {id:'r1',topic:'Claude Projects & Notebooks — GA launch',source:'Anthropic blog',layer:'L3',score:91,sev:'high',why:'Major surface change to Claude.ai; broad professional impact; teachable in 15 min',platform:'Anthropic Claude',detected:'2026-08-18',status:'new'},
+      {id:'r2',topic:'Vibe coding goes mainstream — GitHub Copilot Workspace',source:'GitHub changelog + TechCrunch',layer:'L3',score:87,sev:'high',why:'High practical impact for non-engineers; core vibe-coding workflow demo',platform:'All',detected:'2026-08-17',status:'new'},
+      {id:'r3',topic:'Google Gemini 2.5 Flash — extended context window (1M tokens)',source:'Google DeepMind blog',layer:'L3',score:83,sev:'high',why:'Changes how professionals structure long-document prompts; immediate workflow change',platform:'Google Gemini',detected:'2026-08-16',status:'new'},
+      {id:'r4',topic:'OpenAI o3 reasoning model — professional use patterns',source:'OpenAI release notes',layer:'L3',score:79,sev:'high',why:'New reasoning mode changes how professionals should prompt for analysis tasks',platform:'ChatGPT / OpenAI',detected:'2026-08-16',status:'new'},
+      {id:'r5',topic:'Perplexity Deep Research — agentic research for professionals',source:'Perplexity blog + VentureBeat',layer:'L3',score:76,sev:'med',why:'New agentic research pattern; directly applicable to knowledge workers',platform:'All',detected:'2026-08-15',status:'new'},
+      {id:'r6',topic:'Microsoft Copilot Pages — collaborative AI documents',source:'Microsoft M365 blog',layer:'L3',score:72,sev:'med',why:'New collaborative surface for Copilot users; workflow change for M365 orgs',platform:'Microsoft Copilot',detected:'2026-08-14',status:'new'},
+      {id:'r7',topic:'Agentic AI multi-step task automation — pattern library',source:'Research landscape + LangChain blog',layer:'L3',score:80,sev:'high',why:'Conceptual pattern that applies across all tools; durable topic for L3',platform:'All',detected:'2026-08-13',status:'new'},
+      {id:'r8',topic:'L1 Foundational Core — Q4 quarterly review signal',source:'Scheduled quarterly trigger',layer:'L1',score:88,sev:'high',why:'Quarterly cadence triggered; agentic AI section needs update',platform:'All',detected:'2026-08-09',status:'new'},
+      {id:'r9',topic:'AI for FP&A: automated financial modeling — professional demand',source:'Bloomberg + Gartner research',layer:'P2',score:71,sev:'med',why:'High enterprise demand; fits P2 Finance domain track',platform:'All',detected:'2026-08-12',status:'new'},
+      {id:'r10',topic:'Gemini Advanced — real-time Google Workspace deep integration',source:'Google Workspace blog',layer:'L2',score:74,sev:'med',why:'Major platform update to Gemini product; L2 platform course update needed',platform:'Google Gemini',detected:'2026-08-11',status:'new'},
+      {id:'r11',topic:'Claude 4 Sonnet — extended thinking + computer use GA',source:'Anthropic blog + release notes',layer:'L3',score:95,sev:'high',why:'Flagship frontier model leap: persistent reasoning traces and full computer use now GA; changes how professionals delegate complex tasks',platform:'Anthropic Claude',detected:'2026-08-19',status:'new'},
+      {id:'r12',topic:'GPT-5 — multimodal reasoning available to ChatGPT Plus/Pro',source:'OpenAI blog + TechCrunch',layer:'L3',score:93,sev:'high',why:'Major model upgrade changes baseline expectations for AI quality; professionals need to understand new capability ceiling and use-case fit',platform:'ChatGPT / OpenAI',detected:'2026-08-18',status:'new'},
+      {id:'r13',topic:'Google Gemini 2.0 Ultra — real-time multimodal agents',source:'Google DeepMind blog + The Verge',layer:'L2',score:90,sev:'high',why:'New flagship model resets Gemini course content; live audio/video reasoning and native tool-calling are net-new teachable capabilities',platform:'Google Gemini',detected:'2026-08-17',status:'new'},
+      {id:'r14',topic:'Meta Llama 4 — open-source frontier model for enterprise',source:'Meta AI blog + VentureBeat',layer:'L3',score:84,sev:'high',why:'First open-weight model matching closed-model quality; enterprises deploying internally — significant shift in how professionals understand AI access and governance',platform:'All',detected:'2026-08-16',status:'new'},
+      {id:'r15',topic:'Microsoft Copilot autonomous agents — M365 workflow execution',source:'Microsoft M365 blog + Ignite keynote',layer:'L2',score:88,sev:'high',why:'Copilot can now execute multi-step M365 workflows autonomously (email triage, calendar management, document drafting); major workflow change for enterprise learners',platform:'Microsoft Copilot',detected:'2026-08-15',status:'new'},
     ],
 
     schedule: [
-      {id:'s1',date:'2026-06-12',label:'Drop · Jun W2',type:'drop',topic:'Vibe coding with GitHub Copilot Workspace',layer:'L3',status:'drafting',assignee:'LD Lead'},
-      {id:'s2',date:'2026-06-26',label:'Drop · Jun W4',type:'drop',topic:null,layer:'L3',status:'planned',assignee:null},
-      {id:'s3',date:'2026-07-10',label:'Drop · Jul W2',type:'drop',topic:null,layer:'L3',status:'planned',assignee:null},
-      {id:'s4',date:'2026-07-24',label:'Drop · Jul W4',type:'drop',topic:null,layer:'L3',status:'planned',assignee:null},
-      {id:'s5',date:'2026-07-31',label:'Catch-up · 8-wk',type:'catch',topic:'Jun–Jul consolidation (L3 drops 1–4)',layer:'L4',status:'planned',assignee:null},
-      {id:'s6',date:'2026-09-01',label:'Core review · Q3',type:'core',topic:'Foundational Core quarterly review',layer:'L1',status:'planned',assignee:'Stuart V.'},
+      {id:'s1',date:'2026-08-20',label:'Drop · Aug W3',type:'drop',topic:'OpenAI o3 Reasoning Mode for Professionals',layer:'L3',status:'drafting',assignee:'LD Lead'},
+      {id:'s2',date:'2026-09-03',label:'Drop · Sep W1',type:'drop',topic:null,layer:'L3',status:'planned',assignee:null},
+      {id:'s3',date:'2026-09-17',label:'Drop · Sep W3',type:'drop',topic:null,layer:'L3',status:'planned',assignee:null},
+      {id:'s4',date:'2026-10-01',label:'Drop · Oct W1',type:'drop',topic:null,layer:'L3',status:'planned',assignee:null},
+      {id:'s5',date:'2026-10-08',label:'Catch-up · 8-wk',type:'catch',topic:'Aug–Sep consolidation (L3 drops 1–4)',layer:'L4',status:'planned',assignee:null},
+      {id:'s6',date:'2026-11-09',label:'Core review · Q4',type:'core',topic:'Foundational Core quarterly review',layer:'L1',status:'planned',assignee:'Stuart V.'},
     ],
 
     kanban: {
       research:  [
-        {id:'k1',title:'L1 Q2 quarterly review scoping',layer:'L1',sev:'high',due:'2026-07-01',assign:'Stuart V.',fromFlow:false},
-        {id:'k8',title:'AI for FP&A — P2 elective scoping',layer:'P2',sev:'med',due:'2026-07-15',assign:'Shyama C.',fromFlow:false},
+        {id:'k1',title:'L1 Q3 quarterly review scoping',layer:'L1',sev:'high',due:'2026-09-08',assign:'Stuart V.',fromFlow:false},
+        {id:'k8',title:'AI for FP&A — P2 elective scoping',layer:'P2',sev:'med',due:'2026-09-22',assign:'Shyama C.',fromFlow:false},
       ],
       classify:  [
-        {id:'k2',title:'Claude Projects & Notebooks — L2 platform update',layer:'L2',sev:'high',due:'2026-06-20',assign:'LD Lead',fromFlow:false},
+        {id:'k2',title:'Claude Projects & Notebooks — L2 platform update',layer:'L2',sev:'high',due:'2026-08-28',assign:'LD Lead',fromFlow:false},
       ],
       blueprint: [
-        {id:'k3',title:'Agentic AI multi-step patterns — L3 brief',layer:'L3',sev:'med',due:'2026-06-26',assign:'LD Lead',fromFlow:false},
-        {id:'k10',title:'Gemini Advanced Workspace integration — L2 update',layer:'L2',sev:'med',due:'2026-06-28',assign:'Shyama C.',fromFlow:false},
+        {id:'k3',title:'Agentic AI multi-step patterns — L3 brief',layer:'L3',sev:'med',due:'2026-09-03',assign:'LD Lead',fromFlow:false},
+        {id:'k10',title:'Gemini Advanced Workspace integration — L2 update',layer:'L2',sev:'med',due:'2026-09-05',assign:'Shyama C.',fromFlow:false},
       ],
       production:[
-        {id:'k4',title:'Vibe coding drop — media production',layer:'L3',sev:'high',due:'2026-06-12',assign:'Friedl K.',fromFlow:false},
-        {id:'k5',title:'Foundational Core v2.0 — final QA',layer:'L1',sev:'high',due:'2026-06-15',assign:'Geetika S.',fromFlow:false},
+        {id:'k4',title:'Vibe coding drop — media production',layer:'L3',sev:'high',due:'2026-08-20',assign:'Friedl K.',fromFlow:false},
+        {id:'k5',title:'Foundational Core v2.0 — final QA',layer:'L1',sev:'high',due:'2026-08-23',assign:'Geetika S.',fromFlow:false},
       ],
       published: [
-        {id:'k6',title:'ChatGPT Projects refresh drop',layer:'L3',sev:'med',due:'2026-05-29',assign:'Friedl K.',fromFlow:false},
-        {id:'k7',title:'Copilot agent mode (Excel) drop',layer:'L3',sev:'med',due:'2026-05-15',assign:'Friedl K.',fromFlow:false},
+        {id:'k6',title:'ChatGPT Projects refresh drop',layer:'L3',sev:'med',due:'2026-08-06',assign:'Friedl K.',fromFlow:false},
+        {id:'k7',title:'Copilot agent mode (Excel) drop',layer:'L3',sev:'med',due:'2026-07-23',assign:'Friedl K.',fromFlow:false},
       ],
     },
   };
@@ -642,10 +702,10 @@ ${trackerBanner()}
   <div class="panel-head"><h2>Layer Status</h2></div>
   <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:11px;">
     ${[
-      {l:'L1',name:'Foundational Core',ver:'v2.0',next:'Q3 review · Sep 2026',prog:100,color:'var(--l1)'},
+      {l:'L1',name:'Foundational Core',ver:'v2.0',next:'Q4 review · Nov 2026',prog:100,color:'var(--l1)'},
       {l:'L2',name:'Platform Courses',ver:'4 courses',next:'Claude v2.0 triggered',prog:75,color:'var(--l2)'},
-      {l:'L3',name:'Update Drops',ver:'Jun W2',next:'Due Jun 12',prog:55,color:'var(--lm-green)'},
-      {l:'L4',name:'Catch-up Module',ver:'May 2026',next:'Next: Jul 31',prog:100,color:'var(--l4)'},
+      {l:'L3',name:'Update Drops',ver:'Aug W3',next:'Due Aug 20',prog:55,color:'var(--lm-green)'},
+      {l:'L4',name:'Catch-up Module',ver:'Jul 2026',next:'Next: Oct 8',prog:100,color:'var(--l4)'},
       {l:'P2',name:'Program 2',ver:'v1.0 in dev',next:'~3 month timeline',prog:20,color:'var(--p2)'},
     ].map(x=>`
     <div class="card" style="padding:14px;cursor:pointer;" onclick="setView('research')">
@@ -1063,7 +1123,7 @@ function approveClassify() {
     title:item.topic.slice(0,70),
     layer:finalLayer,
     sev:item.sev,
-    due:state.schedule.find(s=>s.status==='planned')?.date || '2026-06-26',
+    due:state.schedule.find(s=>s.status==='planned')?.date || '2026-09-03',
     assign:'LD Lead',
     fromFlow:true,
     sourceId:item.id,
@@ -1089,11 +1149,11 @@ function renderBlueprint() {
   const flowItem = state.blueprintItem; // the item that just came through classify
 
   const gapData = [
-    {area:'AI Fundamentals — agentic concepts',l1:'Current v2.0',l2:'N/A',l3:'May 2026 drop',status:'current'},
+    {area:'AI Fundamentals — agentic concepts',l1:'Current v2.0',l2:'N/A',l3:'Jul 2026 drop',status:'current'},
     {area:'Prompt engineering — chain-of-thought',l1:'v2.0 covers basics',l2:'N/A',l3:'Outdated pre-2026',status:'outdated'},
     {area:'Claude Projects & Notebooks',l1:'Missing',l2:'v1.0 — outdated',l3:'No drop yet',status:'missing'},
     {area:'Vibe coding workflows',l1:'Not covered',l2:'N/A',l3:'In production',status:'outdated'},
-    {area:'Agentic multi-step patterns',l1:'High level only',l2:'N/A',l3:'Approved Jun W4',status:'outdated'},
+    {area:'Agentic multi-step patterns',l1:'High level only',l2:'N/A',l3:'Approved Sep W1',status:'outdated'},
     {area:'Responsible AI — FTC / EU AI Act',l1:'v2.0 current',l2:'N/A',l3:'Not needed',status:'current'},
     {area:'Gemini 2.5 Flash — extended context',l1:'Not covered',l2:'Needs update',l3:'No drop yet',status:'missing'},
     {area:'AI for FP&A professionals',l1:'Not in scope',l2:'N/A',l3:'Not in scope',status:'missing'},
@@ -1125,7 +1185,7 @@ ${flowItem ? `
 
 <!-- GAP TABLE -->
 <div class="panel">
-  <div class="panel-head"><h2>Gap Analysis — Catalogue Coverage</h2><span class="hint">Vector Repository · Jun 11, 2026</span></div>
+  <div class="panel-head"><h2>Gap Analysis — Catalogue Coverage</h2><span class="hint">Vector Repository · Aug 19, 2026</span></div>
   <p class="section-lead">What is missing, outdated, or covered across layers. Use this to confirm what blueprint docs to generate.</p>
   <div style="overflow-x:auto;">
   <table class="gap-table" style="margin-bottom:14px;">
@@ -1229,7 +1289,7 @@ const BLUEPRINT_DOCS = {
   'agentic-patterns':{title:'Agentic AI Multi-step Task Patterns',layer:'L3',obj:'Learner can design a 3-step agentic workflow using any major AI tool to automate a recurring business task.',outline:['1. What agentic means: from single prompt to task chains','2. Core pattern: goal → plan → sub-tasks → verify','3. Walk through: building a competitor monitoring agent','4. Cross-tool applicability: ChatGPT, Claude, Gemini','5. Key takeaway + knowledge check'],assets:['Topic video (5 min, slide-based)','Process map infographic','Template worksheet: workflow designer','2 MCQs + answer keys'],notes:'Must work with all 4 platforms — keep tool-agnostic where possible.'},
   'gemini-flash':{title:'Gemini 2.5 Flash — 1M Token Context for Professionals',layer:'L3',obj:'Learner can effectively use Gemini 2.5 Flash\'s extended context window to analyze long documents and multi-part datasets in a single prompt.',outline:['1. Why context window size matters to professionals','2. What changed: 1M tokens vs previous limits','3. Demo: analyzing a 100-page report in one prompt','4. Practical patterns: when to use extended context','5. Key takeaway + knowledge check'],assets:['Screencast demo (3 min)','Comparison infographic: before vs after context limit','Sample prompt templates','2 MCQs + answer keys'],notes:'Use realistic business documents (annual reports, contracts) in demos.'},
   'o3-reasoning':{title:'OpenAI o3 Reasoning Mode for Professionals',layer:'L3',obj:'Learner can select between standard and reasoning mode in ChatGPT and apply reasoning mode to multi-step analysis tasks.',outline:['1. What reasoning mode is and when it activates','2. Standard vs reasoning: cost, speed, quality tradeoffs','3. Best use cases: financial modeling, legal analysis, planning','4. Demo: complex scenario with reasoning on vs off','5. Key takeaway + knowledge check'],assets:['Side-by-side screencast (4 min)','Decision guide infographic','Practice prompt set','2 MCQs + answer keys'],notes:'Show concrete business examples where reasoning clearly outperforms standard mode.'},
-  'l1-quarterly':{title:'L1 Foundational Core — Q3 2026 Quarterly Review',layer:'L1',obj:'Updated foundational course reflects current AI landscape, agentic AI, and responsible AI frameworks as of Q3 2026.',outline:['Module 1: Core AI concepts (refresh agentic AI)','Module 2: Prompt engineering (add reasoning models, chain-of-thought)','Module 3: Evaluating AI tools (update landscape)','Module 4: Responsible AI (FTC Order, EU AI Act update)','Module 5: Real-world applications (refresh case studies)'],assets:['7 revised lesson briefs','7 updated video scripts','5 revised activity worksheets','Updated assessment bank (20 items)','Revised module manifests'],notes:'Stuart: agentic AI section definitions shifted significantly since v2.0. Full review needed.'},
+  'l1-quarterly':{title:'L1 Foundational Core — Q4 2026 Quarterly Review',layer:'L1',obj:'Updated foundational course reflects current AI landscape, agentic AI, and responsible AI frameworks as of Q4 2026.',outline:['Module 1: Core AI concepts (refresh agentic AI)','Module 2: Prompt engineering (add reasoning models, chain-of-thought)','Module 3: Evaluating AI tools (update landscape)','Module 4: Responsible AI (FTC Order, EU AI Act update)','Module 5: Real-world applications (refresh case studies)'],assets:['7 revised lesson briefs','7 updated video scripts','5 revised activity worksheets','Updated assessment bank (20 items)','Revised module manifests'],notes:'Stuart: agentic AI section definitions shifted significantly since v2.0. Full review needed.'},
   'fpa-track':{title:'AI for FP&A Professionals — P2 Domain Track',layer:'P2',obj:'Learner can build an AI-assisted financial model and automate a recurring FP&A workflow using low-code AI tools.',outline:['1. AI in FP&A: the current state','2. Financial modeling with AI assistance','3. Automating variance analysis','4. Risk flagging with AI agents','5. Portfolio capstone project brief'],assets:['6 lesson briefs','6 video scripts','Dataset: realistic P&A sample data','Assessment bank (15 items)','Capstone project brief'],notes:'SME must have active FP&A / finance automation practitioner experience. Verify all tool integrations.'},
 };
 
@@ -1299,7 +1359,7 @@ function openDeltaCheck() {
     <p style="color:var(--slate);font-size:13px;margin-top:0;">Cross-referencing new content against Vector Repository baseline to ensure no redundant production.</p>
     <div class="agent-out" style="min-height:160px;">Δ DELTA CHECK — ${NOW.toISOString().slice(0,10)}
 
-Comparing against: Catalogue v3.0 (updated 2026-06-10)
+Comparing against: Catalogue v3.0 (updated 2026-08-15)
 Scope: L1 baseline + all L2/L3 published assets
 
 L1 Foundation v2.0 ............ No direct overlap
@@ -1334,7 +1394,7 @@ function sendToProduction() {
     title:finalTitle,
     layer,
     sev:ai?ai.sev:'med',
-    due:state.schedule.find(s=>s.status==='planned')?.date||'2026-06-26',
+    due:state.schedule.find(s=>s.status==='planned')?.date||'2026-09-03',
     assign:'Friedl K.',
     fromFlow:true,
   });
@@ -1364,7 +1424,7 @@ function sendToProduction() {
         <li>Video screencast: complete by Day 7</li>
         <li>Infographic + interactions: complete by Day 7</li>
         <li>QA & SCORM packaging: Days 8–14</li>
-        <li>LMS deploy target: ${state.schedule.find(s=>s.status==='planned')?.date||'2026-06-26'}</li>
+        <li>LMS deploy target: ${state.schedule.find(s=>s.status==='planned')?.date||'2026-09-03'}</li>
       </ul>
       <p style="margin:0;"><strong>Assignee:</strong> Friedl K. (media) · Geetika S. (QA)</p>
     </div>
@@ -1536,7 +1596,7 @@ function openAddItem(col='research') {
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
         <div><label style="display:block;font-weight:700;font-size:13px;margin-bottom:5px;">Due date</label>
-          <input id="ni-due" type="date" value="2026-06-30" style="width:100%;padding:9px;border-radius:9px;border:1px solid var(--hair);font-size:13px;"></div>
+          <input id="ni-due" type="date" value="2026-09-01" style="width:100%;padding:9px;border-radius:9px;border:1px solid var(--hair);font-size:13px;"></div>
         <div><label style="display:block;font-weight:700;font-size:13px;margin-bottom:5px;">Assignee</label>
           <select id="ni-assign" style="width:100%;padding:9px;border-radius:9px;border:1px solid var(--hair);font-size:13px;">
             <option>LD Lead</option><option>Stuart V.</option><option>Shyama C.</option><option>Friedl K.</option><option>Geetika S.</option><option>Anil T.</option>
@@ -1621,7 +1681,7 @@ ${trackerBanner()}
       <span style="font-size:15px;">⚡</span><div style="font-weight:800;font-size:14px;">Claude Projects & Notebooks — GA</div>
       <span class="badge l2" style="margin-left:auto;">L2 · Platform</span>
     </div>
-    <div style="font-size:12.5px;color:var(--slate);margin-bottom:10px;">Detected Jun 10 · Anthropic blog · HIGH · Affects: Claude course v1.0 → v2.0</div>
+    <div style="font-size:12.5px;color:var(--slate);margin-bottom:10px;">Detected Aug 18 · Anthropic blog · HIGH · Affects: Claude course v1.0 → v2.0</div>
     <div style="display:flex;gap:8px;">
       <button class="btn sm orange" onclick="approveL2Trigger()">✓ Approve update sprint</button>
       <button class="btn sm ghost" onclick="toast('Trigger dismissed')">Dismiss</button>
@@ -1663,7 +1723,7 @@ function advanceSprint(id) {
 }
 
 function approveL2Trigger() {
-  state.kanban.research.push({id:'kl2_'+Date.now(),title:'Claude Projects & Notebooks — L2 platform course update',layer:'L2',sev:'high',due:'2026-06-30',assign:'LD Lead',fromFlow:false});
+  state.kanban.research.push({id:'kl2_'+Date.now(),title:'Claude Projects & Notebooks — L2 platform course update',layer:'L2',sev:'high',due:'2026-08-31',assign:'LD Lead',fromFlow:false});
   toast('L2 trigger approved — added to Research/Classify queue',true);
   renderSchedule();
 }
